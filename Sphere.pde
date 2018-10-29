@@ -4,7 +4,7 @@ class Sphere
   int strokeC;
   float r;
   PVector velocity;
-  int posY;
+  PVector position;
   boolean atTop;
  // int vy;
   
@@ -13,25 +13,33 @@ class Sphere
     this.c = c;
     this.strokeC = strokeC;
     this.r = r;
-    velocity = new PVector(0, 40);
+    position = new PVector(width/4, height/5);
+    velocity = new PVector();
+    velocity.set(0,0,20.0);
     boolean atTop = false;
-    posY = width/5;
+    //int posY = height/5;
   //  int vy = 0;
   }
   
   void display()
   {
     pushMatrix();
-    translate(width/4, posY);
+    translate(position.x, position.y, position.z);
     fill(c);
     stroke(strokeC);
     sphere(r);
     popMatrix();
     
-    while(posY > height-r)
+    position.add(velocity);
+
+        
+    if(position.z<-height+r || position.z >-height-r)
+         atTop = true;
+    
+ /*   if(atTop == true)
     {
-      posY+=20;
-    }
+      
+    }*/
   }
 }
 

@@ -27,6 +27,7 @@ void setup()
   fullScreen(P3D);
   
   spheres = new ArrayList<Sphere>();
+  spheres.add(new Sphere(color(251, 252, 212), color(255), 100));
     
  /* cam = new PeasyCam(this, 100);
   cam.setMinimumDistance(50);
@@ -92,9 +93,21 @@ void draw() //give client give class file name for texture
     endShape();
   }
   
-  spheres.add(new Sphere(color(251, 252, 212), color(255), 100));
   for(Sphere s: spheres)
   {
     s.display();
+    
+  /*  while(s.posY > height-s.r)
+    {
+      s.posY-=800; 
+    }*/
   }
 }
+  
+/*void keyPressed()
+{
+  if(keyCode == UP)
+  {
+    spheres.get(0).posY -=1;
+  }
+}*/
